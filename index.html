@@ -2,18 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Special Question...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>A Special Question for You</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div id="heartBg"></div>
-    <audio id="bgMusic" loop><source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg"></audio>
+    <div class="glitter-container"></div>
+
+    <audio id="bgMusic" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    </audio>
     <button class="music-ctrl" onclick="toggleMusic()">🎵</button>
 
-    <div class="container">
-        <h1 id="title">Will you be my Valentine?</h1>
+    <div class="container" id="mainCard">
+        <h1 id="title">Manu <br>Will you be my Valentine?</h1>
         
         <div class="photo-frame" id="photoFrame">
             <img src="images/img1.jpeg" class="active">
@@ -28,14 +32,20 @@
             </div>
         </div>
 
-        <div id="wishMessage">
-            <h2 style="font-family: 'Dancing Script'; font-size: 2rem; margin: 0;">Happy Valentine's Day!</h2>
-            <p>You’ve made me the luckiest person in the world. 🥰</p>
+        <div id="wishMessage" style="display: none;">
+            <h2 class="dancing-font">Happy Valentine's Day!<br>My Love Sudipa</h2>
+            <p>🥰</p>
+            <button class="btn surprise-btn" id="surpriseBtn" onclick="showKisses()">Click for a Surprise 💋</button>
+        </div>
+
+        <div id="kissSection" style="display: none;">
+            <img src="images/kiss.gif" alt="Kisses" class="kiss-gif">
+            <h2 class="dancing-font">Mwah! 💋</h2>
+            <p>Ummmmmaaaaahhhhhhaaaaaa😘😘😘😘😘</p>
+            <button class="btn" onclick="resetPage()" style="margin-top: 15px; background: white; color: #c9184a;">See Photos Again ✨</button>
         </div>
     </div>
 
-    <script src="script.js">
-        
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
