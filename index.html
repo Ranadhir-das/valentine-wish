@@ -13,7 +13,7 @@
     <button class="music-ctrl" onclick="toggleMusic()">🎵</button>
 
     <div class="container">
-        <h1 id="title">Hey Manu <br> Will you be my Valentine?</h1>
+        <h1 id="title">Will you be my Valentine?</h1>
         
         <div class="photo-frame" id="photoFrame">
             <img src="images/img1.jpeg" class="active">
@@ -24,12 +24,12 @@
         <div id="proposalSection">
             <div class="btn-group">
                 <button class="btn" id="yesBtn" onclick="celebrate()">YES! ❤️</button>
-                <button class="btn" id="noBtn" onmouseover="moveNoButton()" onclick="moveNoButton()">No</button>
+                <button class="btn" id="noBtn" onmouseover="moveNoButton()" onclick="moveNoButton()" ontouchstart="moveNoButton()">No</button>
             </div>
         </div>
 
         <div id="wishMessage">
-            <h2 style="font-family: 'Dancing Script'; font-size: 2.5rem; margin: 0;">Happy Valentine's Day!</h2>
+            <h2 style="font-family: 'Dancing Script'; font-size: 2rem; margin: 0;">Happy Valentine's Day!</h2>
             <p>You’ve made me the luckiest person in the world. 🥰</p>
         </div>
     </div>

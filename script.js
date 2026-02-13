@@ -1,12 +1,12 @@
-// The Fix: Use absolute positioning for the 'No' button relative to the window
-        function moveNoButton() {
+function moveNoButton() {
             const noBtn = document.getElementById('noBtn');
-            // Calculate random positions within the visible window
-            const maxX = window.innerWidth - noBtn.offsetWidth;
-            const maxY = window.innerHeight - noBtn.offsetHeight;
+            // Safe margins so button doesn't go off edge
+            const padding = 20;
+            const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+            const maxY = window.innerHeight - noBtn.offsetHeight - padding;
             
-            const randomX = Math.floor(Math.random() * maxX);
-            const randomY = Math.floor(Math.random() * maxY);
+            const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
+            const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
             
             noBtn.style.position = 'fixed';
             noBtn.style.left = randomX + 'px';
@@ -29,20 +29,20 @@
                 imgs[idx].classList.add('active');
             }, 3000);
 
-            for(let i=0; i<20; i++) setTimeout(spawnHeart, i * 100);
+            for(let i=0; i<15; i++) setTimeout(spawnHeart, i * 150);
         }
 
         function spawnHeart() {
             const h = document.createElement('div');
             h.innerHTML = '❤️';
             h.className = 'floating-heart';
-            h.style.left = Math.random() * 100 + 'vw';
+            h.style.left = Math.random() * 95 + 'vw';
             h.style.top = '105vh';
-            h.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            h.style.fontSize = (Math.random() * 15 + 15) + 'px';
             document.getElementById('heartBg').appendChild(h);
             setTimeout(() => h.remove(), 5000);
         }
-        setInterval(spawnHeart, 400);
+        setInterval(spawnHeart, 500);
 
         const audio = document.getElementById('bgMusic');
         function toggleMusic() {
