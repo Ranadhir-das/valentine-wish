@@ -34,12 +34,26 @@ function celebrate() {
 function startPhotoTransition() {
     const imgs = document.querySelectorAll('.photo-frame img');
     let idx = 0;
-    if(photoInterval) clearInterval(photoInterval);
+
+    if (photoInterval) clearInterval(photoInterval);
+
     photoInterval = setInterval(() => {
-        imgs[idx].classList.remove('active');
+        // 1. Identify current active image
+        const currentImg = imgs[idx];
+        
+        // 2. Remove 'last-active' from everyone else
+        imgs.forEach(img => img.classList.remove('last-active'));
+        
+        // 3. Make current image the 'last-active' (so it stays visible during fade)
+        currentImg.classList.add('last-active');
+        currentImg.classList.remove('active');
+
+        // 4. Move to next index
         idx = (idx + 1) % imgs.length;
+
+        // 5. Fade in the new image
         imgs[idx].classList.add('active');
-    }, 3000);
+    }, 4000); // 4 seconds gives enough time for the 1.8s transition
 }
 
 function showKisses() {

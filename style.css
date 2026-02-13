@@ -59,7 +59,8 @@ h1, .dancing-font {
 }
 
 .photo-frame {
-    width: 160px; height: 160px;
+    width: 160px;
+    height: 160px;
     margin: 0 auto 20px;
     border: 5px solid white;
     border-radius: 50%;
@@ -67,14 +68,34 @@ h1, .dancing-font {
     position: relative;
     display: none;
     box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    background: #fff; /* Prevents seeing the background during fade */
 }
 
 .photo-frame img {
     position: absolute;
-    top:0; left:0; width:100%; height:100%; object-fit:cover;
-    opacity:0; transition: 1.5s ease-in-out;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    /* Smoothness Hack: Use cubic-bezier and hardware acceleration */
+    transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1), transform 1.8s ease-in-out;
+    transform: scale(1.1); /* Slight zoom out effect for smoothness */
+    will-change: opacity, transform;
 }
-.photo-frame img.active { opacity:1; }
+
+.photo-frame img.active {
+    opacity: 1;
+    transform: scale(1); /* Zooms in slightly as it fades in */
+    z-index: 2;
+}
+
+/* Ensure the previous image stays visible underneath while the new one fades in */
+.photo-frame img.last-active {
+    opacity: 0;
+    z-index: 1;
+}
 
 .btn-group { 
     display: flex; justify-content: center; gap: 15px; 
